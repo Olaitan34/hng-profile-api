@@ -25,8 +25,7 @@ SECRET_KEY = 'django-insecure-9ls70%7^*91n964^7)7*__n-ju+ppybkp4ox5lhtu_l=z3!+3(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["*"]
-
+ALLOWED_HOSTS = ['hng-profile-api-1234.up.railway.app', 'localhost']
 
 # Application definition
 
