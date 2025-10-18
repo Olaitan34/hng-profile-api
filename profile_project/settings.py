@@ -157,6 +157,11 @@ if not DEBUG:
     SECURE_BROWSER_XSS_FILTER = True
     SECURE_CONTENT_TYPE_NOSNIFF = True
     X_FRAME_OPTIONS = 'DENY'
-    CSRF_TRUSTED_ORIGINS = [
-        'https://hng-profile-api-1234.up.railway.app',
-    ]
+    
+    # Get CSRF trusted origins from environment or use ALLOWED_HOSTS
+    csrf_origins = os.getenv('CSRF_TRUSTED_ORIGINS', '')
+    if csrf_origins:
+        CSRF_TRUSTED_ORIGINS = csrf_origins.split(',')
+    else:
+        # Automatically generate from ALLOWED_HOSTS
+        CSRF_TRUSTED_ORIGINS = [f'https://{host}' for host in ALLOWED_HOSTS if host not in ['localhost', '127.0.0.1']]
